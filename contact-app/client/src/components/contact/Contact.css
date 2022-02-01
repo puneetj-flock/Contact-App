@@ -1,0 +1,45 @@
+.contact-box {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 1px solid grey;
+  /* border-bottom-width: 10px; */
+  background-color: #fff;
+}
+
+.contact-box-info {
+  display: flex;
+  width: 60%;
+  justify-content: flex-start;
+}
+.contact-avatar {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.contact-text {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+.contact-name {
+  align-self: center;
+  font-size: 20px;
+}
+
+.contact-number {
+  align-self: center;
+  font-size: 14px;
+}
+
+.contact-edit,
+.contact-delete {
+  max-width: 45px;
+  flex: 1;
+  align-self: center;
+}

@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar {
+  background-color: cadetblue;
+  flex: 1;
+}
+.main-wrapper {
+  background-color: floralwhite;
+  flex: 4;
+}
