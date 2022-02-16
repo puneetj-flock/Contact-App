@@ -2,6 +2,8 @@ package com.example.contacts.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.sql.Timestamp;
+
 public class ContactDetails {
   private Integer id;
   @SerializedName("user_id")
@@ -11,6 +13,16 @@ public class ContactDetails {
   private String email;
   private String address;
   private Integer score;
+  @SerializedName("time_stamp")
+  private Timestamp timestamp;
+
+  public Timestamp getTimestamp() {
+    return timestamp;
+  }
+
+  public void setTimestamp(Timestamp timestamp) {
+    this.timestamp = timestamp;
+  }
 
   public Integer getId() {
     return id;

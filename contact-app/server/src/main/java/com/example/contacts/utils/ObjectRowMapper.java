@@ -22,6 +22,7 @@ public class ObjectRowMapper {
     contact.setEmail(rs.getString("email"));
     contact.setAddress(rs.getString("address"));
     contact.setScore(rs.getInt("score"));
+    contact.setTimestamp(rs.getTimestamp("time_stamp"));
     return contact;
   };
 

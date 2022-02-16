@@ -57,6 +57,7 @@ public class AuthDB {
 
   public boolean register(User user) {
 
+    System.out.println("User Register enter here\n");
     if(!user.validateEmail())
     {
       throw new ResponseStatusException(FORBIDDEN);
