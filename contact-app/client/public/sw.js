@@ -1,4 +1,4 @@
-// import { idbManager } from "../src/tailgate/indexDB/idbManager.api.ts";
+import { idbManager } from "../src/tailgate/indexDB/idbManager.api.ts";
 
 // eslint-disable-next-line no-undef
 // importScripts("idbManager.api.ts");
@@ -7,7 +7,6 @@
 self.addEventListener("fetch", (event) => {
   //   console.log("event intercepted");
   // eslint-disable-next-line no-undef
-  obj.hehe();
   console.log(event);
 
   if (event.request.url === "http://localhost:8080/contact/get") {
