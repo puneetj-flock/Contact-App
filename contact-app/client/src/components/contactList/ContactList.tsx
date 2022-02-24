@@ -1,11 +1,11 @@
 import { useAppSelector } from "../../redux/hook";
-import { ContactSort } from "../../utilities/contactSort";
-import { db } from "../../indexDB/db";
+import { ContactSort } from "../../utilities/contact-sort/contacts.sort";
 import { useState, useEffect } from "react";
 import "./ContactList.scss";
-import { subscriber } from "../../indexDB/observableDb";
+import { subscriber } from "../../tailgate/indexDB/observableDb";
 import { listManager } from "./listManager";
 import { Contact } from "../contact/Contact";
+import { idbManager } from "../../tailgate/indexDB/idbManager.api";
 
 const ContactList = () => {
   const [allContacts, setAllContacts] = useState<any>([]);
@@ -22,10 +22,9 @@ const ContactList = () => {
   }, [allContacts]);
 
   useEffect(() => {
-    db.open();
-    db.contacts.toArray().then((arr) => {
+    idbManager.getContactList().then(arr => {
       setAllContacts(arr);
-    });
+    })
   }, []);
 
   let searchText = useAppSelector((state) => state.searchText.searchText);

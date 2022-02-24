@@ -9,10 +9,9 @@ import {
   setSelectedContact,
   clearSelectedContact,
 } from "../../redux/selectedContact";
-import { ContactService } from "../../service/ContactService";
-import { db } from "../../indexDB/db";
 import { ContactInterface } from "../../utilities/interface";
 import "./Contact.scss";
+import { idbManager } from "../../tailgate/indexDB/idbManager.api";
 
 const Contact = (props:{contact:ContactInterface}) => {
   
@@ -25,8 +24,7 @@ const Contact = (props:{contact:ContactInterface}) => {
       [score]: props.contact.score + 1,
     };
     dispatch(setSelectedContact(updatedScoreContact));
-    ContactService.updateContact(updatedScoreContact);
-    db.contacts.update(updatedScoreContact.id, updatedScoreContact);
+    idbManager.updateContact(updatedScoreContact);
     dispatch(setMenu("ShowContact"));
   };
 
@@ -35,9 +33,7 @@ const Contact = (props:{contact:ContactInterface}) => {
       "Are you sure you want to delete this contact?"
     );
     if (confirmDelete) {
-      ContactService.deleteContact(props.contact.id).then(() => {
-        db.contacts.delete(props.contact.id);
-      });
+      idbManager.deleteContact(props.contact);
       dispatch(setMenu(""));
       dispatch(clearSelectedContact());
     }

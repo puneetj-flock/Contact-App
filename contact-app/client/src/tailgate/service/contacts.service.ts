@@ -7,10 +7,10 @@ import {
   POST,
   PUT,
   DELETE,
-} from "./constants";
+} from "../../utilities/constants";
 
-import { APIManager } from "../api/APIManager";
-import { ContactInterface } from "../utilities/interface";
+import { APIManager } from "../../api/APIManager.api";
+import { ContactInterface } from "../../utilities/interface";
 
 export class ContactService {
   static getContacts() {

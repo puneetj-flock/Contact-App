@@ -5,10 +5,10 @@ import {
   REGISTER_USER,
   GET,
   POST,
-} from "./constants";
+} from "../../utilities/constants";
 
-import { APIManager } from "../api/APIManager";
-import { UserInterface } from "../utilities/interface";
+import { APIManager } from "../../api/APIManager.api";
+import { UserInterface } from "../../utilities/interface";
 
 export class AuthService {
   static checkAuth() {

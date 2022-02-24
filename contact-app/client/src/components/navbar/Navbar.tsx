@@ -2,11 +2,11 @@ import "./Navbar.scss";
 import { Avatar } from "@mui/material";
 import { ExitToAppRounded } from "@material-ui/icons";
 
-import { AuthService } from "../../service/AuthService";
+import { AuthService } from "../../tailgate/service/auth.service";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setAuthenticate } from "../../redux/userAuth";
-import { db } from "../../indexDB/db";
+import { db } from "../../tailgate/indexDB/db";
 
 const Navbar = () => {
   const navigate = useNavigate();

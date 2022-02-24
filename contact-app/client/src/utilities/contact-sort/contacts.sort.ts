@@ -1,6 +1,6 @@
-import { ContactInterface } from "./interface";
+import { ContactInterface } from "../interface";
 
-export const ContactSort = (searchText:string, allContacts:[ContactInterface]) => {
+export const ContactSort = (searchText:string, allContacts:ContactInterface[]) => {
   let contactsToDisplay = [];
   if (searchText !== "") {
     searchText = searchText.toLowerCase();

@@ -2,9 +2,9 @@ import { BaseContact } from "../baseContact/BaseContact";
 import { setMenu } from "../../redux/menu";
 import { useDispatch } from "react-redux";
 import { clearSelectedContact } from "../../redux/selectedContact";
-import { ContactService } from "../../service/ContactService";
-import { addContactIDB } from "../../indexDB/Test";
+import { ContactService } from "../../tailgate/service/contacts.service";
 import { ContactInterface } from "../../utilities/interface";
+import { idbManager } from "../../tailgate/indexDB/idbManager.api";
 
 const AddContact = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const AddContact = () => {
     ContactService.addContact(contact).then((res) => {
       const id = "id";
       contact = { ...contact, [id]: res };
-      addContactIDB(contact);
+      // idbManager.setContact(contact);
       dispatch(setMenu(""));
       dispatch(clearSelectedContact());
     });

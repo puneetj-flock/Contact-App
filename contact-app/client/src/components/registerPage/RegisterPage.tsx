@@ -7,7 +7,7 @@ import TextField from "@mui/material/TextField";
 import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { AuthService } from "../../service/AuthService";
+import { AuthService } from "../../tailgate/service/auth.service";
 import { validate } from "../../utilities/validation";
 
 

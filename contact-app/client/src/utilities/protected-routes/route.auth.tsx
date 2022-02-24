@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useAppSelector } from "../redux/hook";
+import { useAppSelector } from "../../redux/hook";
 
 const ProtectedRouteAuth = () => {
   const authenticate = useAppSelector((state) => state.userAuth.authenticate);

@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { Sidebar } from "../sidebar/Sidebar";
 import { Navbar } from "../navbar/Navbar";
 import { Menu } from "./Menu";
-import { ContactService } from "../../service/ContactService";
-import { addIDB } from "../../indexDB/Test";
+import { ContactService } from "../../tailgate/service/contacts.service";
+import { addIDB } from "../../tailgate/indexDB/Test";
 import "./MainContent.scss";
 
 const MainContent = () => {

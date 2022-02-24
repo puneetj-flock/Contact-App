@@ -4,17 +4,36 @@ import { LoginPage } from "./components/loginPage/LoginPage";
 import { MainContent } from "./components/mainContent/MainContent";
 import { RegisterPage } from "./components/registerPage/RegisterPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ProtectedRouteHome } from "./utilities/protectedRouteHome";
-import { ProtectedRouteAuth } from "./utilities/protectedRouteAuth";
+import { ProtectedRouteHome } from "./utilities/protected-routes/route.home";
+import { ProtectedRouteAuth } from "./utilities/protected-routes/route.auth";
 
-import { AuthService } from "./service/AuthService";
+import { AuthService } from "./tailgate/service/auth.service";
 import { useAppSelector, useAppDispatch } from "./redux/hook";
 import { setAuthenticate } from "./redux/userAuth";
 import { CircularProgress } from "@mui/material";
+import { idbManager } from "./tailgate/indexDB/idbManager.api";
 
 function App() {
+  if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("./sw.js").then(
+          function (registration) {
+            // Registration was successful
+            console.log(
+              "ServiceWorker registration successful with scope: ",
+              registration.scope
+            );
+          },
+          function (err) {
+            // registration failed :(
+            console.log("ServiceWorker registration failed: ", err);
+          }
+        );
+      });
+    }
   const authenticate = useAppSelector((state) => state.userAuth.authenticate);
   const dispatch = useAppDispatch();
+  idbManager.initializeDB();
   useEffect(() => {
     AuthService.checkAuth()
       .then(() => {

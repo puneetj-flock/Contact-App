@@ -1,8 +1,8 @@
 import { BaseContact } from "../baseContact/BaseContact";
 import { setMenu } from "../../redux/menu";
 import { useDispatch } from "react-redux";
-import { ContactService } from "../../service/ContactService";
-import { db } from "../../indexDB/db";
+import { ContactService } from "../../tailgate/service/contacts.service";
+import { db } from "../../tailgate/indexDB/db";
 import { ContactInterface } from "../../utilities/interface";
 
 const EditContact = () => {
