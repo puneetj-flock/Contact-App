@@ -7,7 +7,7 @@ import {
   POST,
 } from "../../utilities/constants";
 
-import { APIManager } from "../../api/APIManager.api";
+import { APIManager } from "../api/APImanager.api";
 import { UserInterface } from "../../utilities/interface";
 
 export class AuthService {
@@ -57,4 +57,3 @@ export class AuthService {
   }
 }
 
-// export instance.

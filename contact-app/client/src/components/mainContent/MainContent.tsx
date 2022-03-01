@@ -2,17 +2,15 @@ import { useEffect } from "react";
 import { Sidebar } from "../sidebar/Sidebar";
 import { Navbar } from "../navbar/Navbar";
 import { Menu } from "./Menu";
-import { ContactService } from "../../tailgate/service/contacts.service";
-import { addIDB } from "../../tailgate/indexDB/Test";
+import { contactManager } from "../../tailgate/api/contactmanager";
 import "./MainContent.scss";
 
 const MainContent = () => {
-  useEffect(() => {
 
-    ContactService.getContacts().then((res) => {
-      addIDB(res);
-    });
+  useEffect(() => {
+    contactManager.getContacts();
   }, []);
+
   return (
     <>
       <Navbar />

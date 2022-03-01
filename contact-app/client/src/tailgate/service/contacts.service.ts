@@ -9,15 +9,15 @@ import {
   DELETE,
 } from "../../utilities/constants";
 
-import { APIManager } from "../../api/APIManager.api";
+import { APIManager } from "../api/APImanager.api";
 import { ContactInterface } from "../../utilities/interface";
 
-export class ContactService {
-  static getContacts() {
+ class ContactService {
+   getContacts() {
     return APIManager.request(GET_CONTACTS, GET, null, true);
   }
 
-  static addContact(contact:ContactInterface) {
+   addContact(contact:ContactInterface) {
     return APIManager.request(
       ADD_CONTACT,
       POST,
@@ -30,7 +30,7 @@ export class ContactService {
     });
   }
 
-  static updateContact(contact:ContactInterface) {
+   updateContact(contact:ContactInterface) {
     return APIManager.request(
       UPDATE_CONTACT,
       PUT,
@@ -41,18 +41,17 @@ export class ContactService {
     );
   }
 
-  static deleteContact(contactId:number) {
-    var formData = new FormData() as any;
-    formData.append("id", contactId);
-    console.log(formData);
-    
+   deleteContact(contact:ContactInterface) {
+
     return APIManager.request(
       DELETE_CONTACT,
       DELETE,
-      formData,
+      JSON.stringify(contact),
       true,
-      false,
+      true,
       false
     );
   }
 }
+
+export const contactService = new ContactService();

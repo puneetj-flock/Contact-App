@@ -12,28 +12,14 @@ import { useAppSelector, useAppDispatch } from "./redux/hook";
 import { setAuthenticate } from "./redux/userAuth";
 import { CircularProgress } from "@mui/material";
 import { idbManager } from "./tailgate/indexDB/idbManager.api";
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 function App() {
-  if ("serviceWorker" in navigator) {
-      window.addEventListener("load", function () {
-        navigator.serviceWorker.register("./sw.js").then(
-          function (registration) {
-            // Registration was successful
-            console.log(
-              "ServiceWorker registration successful with scope: ",
-              registration.scope
-            );
-          },
-          function (err) {
-            // registration failed :(
-            console.log("ServiceWorker registration failed: ", err);
-          }
-        );
-      });
-    }
+  idbManager.initializeDB();
+  serviceWorkerRegistration.register();
   const authenticate = useAppSelector((state) => state.userAuth.authenticate);
   const dispatch = useAppDispatch();
-  idbManager.initializeDB();
+  
   useEffect(() => {
     AuthService.checkAuth()
       .then(() => {

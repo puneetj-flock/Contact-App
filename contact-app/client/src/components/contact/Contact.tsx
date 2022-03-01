@@ -5,13 +5,15 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { setMenu } from "../../redux/menu";
 import { useDispatch } from "react-redux";
 
+
 import {
   setSelectedContact,
   clearSelectedContact,
 } from "../../redux/selectedContact";
 import { ContactInterface } from "../../utilities/interface";
 import "./Contact.scss";
-import { idbManager } from "../../tailgate/indexDB/idbManager.api";
+import { contactManager } from "../../tailgate/api/contactmanager";
+
 
 const Contact = (props:{contact:ContactInterface}) => {
   
@@ -24,8 +26,8 @@ const Contact = (props:{contact:ContactInterface}) => {
       [score]: props.contact.score + 1,
     };
     dispatch(setSelectedContact(updatedScoreContact));
-    idbManager.updateContact(updatedScoreContact);
     dispatch(setMenu("ShowContact"));
+    contactManager.updateContact(updatedScoreContact);
   };
 
   const deleteContact = () => {
@@ -33,7 +35,7 @@ const Contact = (props:{contact:ContactInterface}) => {
       "Are you sure you want to delete this contact?"
     );
     if (confirmDelete) {
-      idbManager.deleteContact(props.contact);
+      contactManager.deleteContact(props.contact);
       dispatch(setMenu(""));
       dispatch(clearSelectedContact());
     }

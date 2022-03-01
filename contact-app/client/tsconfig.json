@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-, "public/sw.js", "public/temp.js"  ]
+, "public/sw.js", "public/temp.js", "src/tailgate/indexDB/idbManager.api.ts"  ]
 }

@@ -1,16 +1,14 @@
 import { BaseContact } from "../baseContact/BaseContact";
 import { setMenu } from "../../redux/menu";
 import { useDispatch } from "react-redux";
-import { ContactService } from "../../tailgate/service/contacts.service";
-import { db } from "../../tailgate/indexDB/db";
 import { ContactInterface } from "../../utilities/interface";
+import { contactManager } from "../../tailgate/api/contactmanager";
 
 const EditContact = () => {
   const dispatch = useDispatch();
 
   const editContactHandler = (contact:ContactInterface) => {
-    ContactService.updateContact(contact);
-    db.contacts.update(contact.id, contact);
+    contactManager.updateContact(contact);
     dispatch(setMenu("ShowContact"));
   };
   return (

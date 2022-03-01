@@ -41,8 +41,9 @@ public class ContactsController {
 
   @DeleteMapping("/delete")
   public void deleteContact( @RequestHeader String sessionToken,
-                            @RequestParam(value = "id") int contactId) {
-    contactsService.deleteContact(sessionToken, contactId);
+                             @RequestBody ContactDetails contact) {
+    System.out.println(contact);
+    contactsService.deleteContact(sessionToken, contact.getId());
   }
 
 }

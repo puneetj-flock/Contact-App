@@ -18,10 +18,8 @@ const Navbar = () => {
       AuthService.logoutUser();
       localStorage.clear();
       sessionStorage.clear();
-      db.delete().then( ()=>{
-        dispatch(setAuthenticate(false));
-        navigate("/login", { replace: true });
-      });
+      dispatch(setAuthenticate(false));
+      navigate("/login", { replace: true });
     }
   };
 
